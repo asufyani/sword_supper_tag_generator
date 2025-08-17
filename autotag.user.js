@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Supper Autotag
 // @version      2025-08-06
-// @description  try to take over the world!
-// @author       You
+// @description  generate copy/pasteable tags for sword and supper missions
+// @author       u/Thats_a_movie (github.com/asufyani)
 // @match        https://*.devvit.net/index.html*
 // @require      https://code.jquery.com/jquery-3.6.0.min.js
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        unsafeWindow
 // @grant        GM_addStyle
+// @downloadURL  https://github.com/asufyani/sword_supper_tag_generator/raw/refs/heads/main/autotag.user.js
 // @updateURL    https://github.com/asufyani/sword_supper_tag_generator/raw/refs/heads/main/autotag.user.js
 // ==/UserScript==
 
