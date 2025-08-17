@@ -8,7 +8,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @grant        unsafeWindow
 // @grant        GM_addStyle
-// @updateURL    https://github.com/asufyani/sword_supper_tag_generator/raw/refs/heads/main/autotag.js
+// @updateURL    https://github.com/asufyani/sword_supper_tag_generator/raw/refs/heads/main/autotag.user.js
 // ==/UserScript==
 
 (function () {
