@@ -36,7 +36,7 @@
             outputData.rewards.push(`${essence.quantity} ${essence.id}`);
           });
         } else if (encounter.type == "crossroadsFight") {
-          const minibossTag = `miniboss ${encounter.enemies[0].type}`;
+          let minibossTag = `miniboss ${encounter.enemies[0].type}`;
           if (missionData.minLevel > 80) {
             minibossTag = "2k " + minibossTag;
           }
