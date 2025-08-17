@@ -37,10 +37,10 @@
           });
         } else if (encounter.type == "crossroadsFight") {
           let minibossTag = `miniboss ${encounter.enemies[0].type}`;
-          if (missionData.minLevel > 80) {
+          if (missionData.minLevel > 60) {
             minibossTag = "2k " + minibossTag;
           }
-          else if (missionData.minLevel > 60) {
+          else if (missionData.minLevel > 40) {
             minibossTag = "1k " + minibossTag;
           }
           outputData.tags.push(minibossTag);
