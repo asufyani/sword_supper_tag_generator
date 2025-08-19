@@ -15,6 +15,65 @@
 (function () {
   "use strict";
   let divAdded = false;
+
+  const enemyNames = {
+    golemBaby: "Baby Golem",
+    slimeKnight: "Slime Knight",
+    slimeBigMouth: "Chomp Slime",
+    slimeCat: "Cat Slime",
+    slimeGems: "Crystal Slime",
+    skeleton: "Warrior Skeleton",
+    skelNoHead: "Headless Skeleton",
+    golemMountain: "Mountain Golem",
+    golemMountainLucky: "Loaded Mountain Golem",
+    golemBoar: "Boar Golem",
+    skelFireHead: "Flaming Skeleton",
+    skelIceHead: "Ice Flame Skeleton",
+    skelArcher: "Ranger Skeleton",
+    skel2Axe: "Barbarian Skeleton",
+    slimeBone: "Bone Slime",
+    slimeBoneLucky: "Loaded Bone Slime",
+    mushroomSmall: "Bitey Shroom",
+    mushroomLarge: "Erin-guy",
+    mushroomLargeBoss: "Boss Mushroom",
+    skelWizard: "Wizard Skeleton",
+    skelGreatSword: "Swordsman Skeleton",
+    skelGreatSwordLucky: "Loaded Swordsman Skeleton",
+    skelAssassin: "Assassin Skeleton",
+    cannibal: "Shadowbearer",
+    darkBat: "Shadow Wing",
+    darkShaman: "Shadowbringer",
+    darkChild: "Shadowkin",
+    darkBigGuy: "Shadow Brute",
+    darkBigGuyLucky: "",
+    darkHand: "Arm of Shadow",
+    darkWizard: "Shadow Conjurer",
+    darkGiantHorns: "Hollowhorn",
+    darkWorm: "Shadow Hatchling",
+    darkSpider: "Skittering Shadow",
+    darkDemon: "Umbral Winged Shadeborn",
+    mushroomChild: "Shroomkin",
+    mushroomFrog: "Sporehead",
+    mushroomSoldierLucky: "Loaded Sporehead",
+    mushroomSoldier: "Sporewarden",
+    livingArmor: "Steel Revenant",
+    mushroomMonster: "Sturdy Sporeborn",
+    mushroomTeeth: "Mawcap",
+    woodGolem: "Heartroot Guardian",
+    icyWoodGolem: "Frostroot Guardian",
+    woodOctopus: "Branchclutch",
+    woodRoof: "Stumpkin",
+    robotNo1: "Y5-Sentry",
+    robotNo2: "KRG-01",
+    robotNo3: "Gen5-HVY",
+    robotNo4: "Medibot-Mark IV",
+    robotNo5: "WasteLogic LX-9",
+    robotNo5Lucky: "Loaded WasteLogic LX-9",
+    robotNo6: "BRX-7 Sentry Chassis",
+    robotNo7: "Minifax Model B",
+    robotBoss: "Slumbering Guardian-X5",
+  };
+
   window.addEventListener("message", function (data) {
     if (data.data.data.message.type == "initialData") {
       const missionData = data.data.data.message.data.missionMetadata.mission;
@@ -33,19 +92,19 @@
           });
         } else if (encounter.type == "treasure") {
           encounter.reward.essences.forEach((essence) => {
-            outputData.rewards.push(`${essence.quantity} ${essence.id}`);
+            const essenceName = essence.id.replace("Essence", "") + " Essence";
+            outputData.rewards.push(`${essence.quantity} ${essenceName}`);
           });
         } else if (encounter.type == "crossroadsFight") {
-          let minibossTag = `miniboss ${encounter.enemies[0].type}`;
+          let minibossTag = `miniboss ${enemyNames[encounter.enemies[0].type]}`;
           if (missionData.minLevel > 60) {
             minibossTag = "2k " + minibossTag;
-          }
-          else if (missionData.minLevel > 40) {
+          } else if (missionData.minLevel > 40) {
             minibossTag = "1k " + minibossTag;
           }
           outputData.tags.push(minibossTag);
         } else if (encounter.type == "boss") {
-          outputData.tags.push(`${encounter.enemies[0].type} boss`);
+          outputData.tags.push(`${enemyNames[encounter.enemies[0].type]} boss`);
         } else if (encounter.type == "investigate") {
           outputData.tags.push("hut");
         }
@@ -53,7 +112,9 @@
 
       const floatingDiv = document.createElement("div");
       floatingDiv.id = "myFloatingDiv";
-      floatingDiv.innerHTML = `enemies: ${Object.keys(outputData.enemyTypes).join(", ")} <br/> tags: ${outputData.tags.join(" + ")} <br/> rewards: ${outputData.rewards}`;
+      floatingDiv.innerHTML = `tags: ${outputData.tags.join(
+        " + "
+      )} <br/> rewards: ${outputData.rewards}`;
       let closeButton = document.createElement("button");
       closeButton.id = "closeFloatingDiv";
       closeButton.textContent = "X";
