@@ -116,12 +116,11 @@
       floatingDiv.id = "myFloatingDiv";
       floatingDiv.style = "cursor: copy";
       floatingDiv.title = "Click to copy";
-      const commentText = `tags: ${outputData.tags.join(
-        " + "
-      )} <br/> rewards: ${outputData.rewards.join(", ")}`;
-      floatingDiv.innerHTML(commentText);
+      const tagText = `tags: ${outputData.tags.join(" + ")}`;
+      const rewardsText = `rewards: ${outputData.rewards.join(", ")}`;
+      floatingDiv.innerHTML = tagText + "<br/>" + rewardsText;
       floatingDiv.onclick = () => {
-        this.navigator.clipboard.writeText(commentText);
+        this.navigator.clipboard.writeText(tagText + " " + rewardsText);
         floatingDiv.append(copiedDiv);
       };
       let closeButton = document.createElement("button");
