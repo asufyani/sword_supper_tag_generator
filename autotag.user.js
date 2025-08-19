@@ -112,9 +112,14 @@
 
       const floatingDiv = document.createElement("div");
       floatingDiv.id = "myFloatingDiv";
-      floatingDiv.innerHTML = `tags: ${outputData.tags.join(
+      floatingDiv.style = "cursor: copy";
+      const commentText = `tags: ${outputData.tags.join(
         " + "
-      )} <br/> rewards: ${outputData.rewards}`;
+      )} <br/> rewards: ${outputData.rewards.join(", ")}`;
+      floatingDiv.innerHTML = commentText;
+      floatingDiv.onclick = () => {
+        this.navigator.clipboard.writeText(commentText);
+      };
       let closeButton = document.createElement("button");
       closeButton.id = "closeFloatingDiv";
       closeButton.textContent = "X";
