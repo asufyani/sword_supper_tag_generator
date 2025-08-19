@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Supper Autotag
-// @version      2025-08-06
+// @version      2025-08-19
 // @description  generate copy/pasteable tags for sword and supper missions
 // @author       u/Thats_a_movie (github.com/asufyani)
 // @match        https://*.devvit.net/index.html*
