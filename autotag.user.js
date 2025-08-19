@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Supper Autotag
-// @version      2025-08-19 15:37
+// @version      2025-08-19 15:42
 // @description  generate copy/pasteable tags for sword and supper missions
 // @author       u/Thats_a_movie (github.com/asufyani)
 // @match        https://*.devvit.net/index.html*
@@ -111,16 +111,18 @@
       });
 
       const floatingDiv = document.createElement("div");
+      const copiedDiv = document.createElement("div");
+      copiedDiv.innerHTML = "Copied to clipboard!";
       floatingDiv.id = "myFloatingDiv";
       floatingDiv.style = "cursor: copy";
       floatingDiv.title = "Click to copy";
       const commentText = `tags: ${outputData.tags.join(
         " + "
       )} <br/> rewards: ${outputData.rewards.join(", ")}`;
-      floatingDiv.innerHTML = commentText;
+      floatingDiv.innerHTML(commentText);
       floatingDiv.onclick = () => {
         this.navigator.clipboard.writeText(commentText);
-        floatingDiv.append("<div>Copied to clipboard!</div>");
+        floatingDiv.append(copiedDiv);
       };
       let closeButton = document.createElement("button");
       closeButton.id = "closeFloatingDiv";
