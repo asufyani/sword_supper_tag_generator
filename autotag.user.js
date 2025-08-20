@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Supper Autotag
-// @version      0.0.3
+// @version      0.0.4
 // @description  generate copy/pasteable tags for sword and supper missions
 // @author       u/Thats_a_movie (github.com/asufyani)
 // @match        https://*.devvit.net/index.html*
@@ -106,7 +106,7 @@
             minibossTag = "1k " + minibossTag;
           }
           outputData.tags.push(minibossTag);
-        } else if (encounter.type == "boss") {
+        } else if (encounter.type == "boss" || encounter.type == "rushBoss") {
           outputData.tags.push(`${enemyNames[encounter.enemies[0].type]} boss`);
         } else if (encounter.type == "investigate") {
           outputData.tags.push("hut");
